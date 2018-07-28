@@ -1,8 +1,8 @@
 package ai.cuddle.livy.service;
 
 import ai.cuddle.livy.entity.CacheDetails;
-import com.cloudera.livy.Job;
-import com.cloudera.livy.JobContext;
+import org.apache.livy.Job;
+import org.apache.livy.JobContext;
 import org.apache.log4j.Logger;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;

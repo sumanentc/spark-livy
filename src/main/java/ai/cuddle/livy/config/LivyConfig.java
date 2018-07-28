@@ -1,7 +1,8 @@
 package ai.cuddle.livy.config;
 
-import com.cloudera.livy.LivyClient;
-import com.cloudera.livy.LivyClientBuilder;
+
+import org.apache.livy.LivyClient;
+import org.apache.livy.LivyClientBuilder;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -33,13 +34,13 @@ public class LivyConfig {
         URI uri = new URI(livyUrl);
         Map<String,String> config = new HashMap<>();
         config.put("spark.app.name","livy-poc");
-        config.put("connection.timeout", "180s");
-        config.put("spark.driver.memory", "4g");
+        config.put("livy.client.http.connection.timeout", "180s");
+        config.put("spark.driver.memory", "1g");
         config.put("spark.serializer", "org.apache.spark.serializer.KryoSerializer");
-        config.put("spark.executor.memory", "15g");
-        config.put("spark.executor.cores","10");
+        //config.put("spark.executor.memory", "15g");
+        //config.put("spark.executor.cores","10");
         //spark.executor.cores concurrent task that and executor can run thread count
-        config.put("spark.executor.instances","3");
+        //config.put("spark.executor.instances","3");
 
         //config.put("spark.dynamicAllocation.enabled","true");
         //config.put("spark.dynamicAllocation.minExecutors","2");

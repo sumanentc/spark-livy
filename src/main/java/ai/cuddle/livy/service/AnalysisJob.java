@@ -2,8 +2,8 @@ package ai.cuddle.livy.service;
 
 import ai.cuddle.livy.entity.request.Analysis;
 import ai.cuddle.livy.entity.request.AnalysisMeasure;
-import com.cloudera.livy.Job;
-import com.cloudera.livy.JobContext;
+import org.apache.livy.Job;
+import org.apache.livy.JobContext;
 import org.apache.spark.sql.SparkSession;
 import org.jboss.logging.Logger;
 

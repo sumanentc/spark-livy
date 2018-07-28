@@ -5,7 +5,7 @@ import ai.cuddle.livy.entity.Response;
 import ai.cuddle.livy.service.CacheJob;
 import ai.cuddle.livy.service.LivyHiveJob;
 import ai.cuddle.livy.service.PiJob;
-import com.cloudera.livy.LivyClient;
+import org.apache.livy.LivyClient;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

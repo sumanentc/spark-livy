@@ -1,8 +1,8 @@
 package ai.cuddle.livy.service;
 
 
-import com.cloudera.livy.Job;
-import com.cloudera.livy.JobContext;
+import org.apache.livy.Job;
+import org.apache.livy.JobContext;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.Function2;
 

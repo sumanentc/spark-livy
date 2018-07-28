@@ -1,8 +1,9 @@
 package ai.cuddle.livy.service;
 
-import com.cloudera.livy.Job;
-import com.cloudera.livy.JobContext;
-import com.cloudera.livy.shaded.jackson.databind.ObjectMapper;
+
+
+import org.apache.livy.Job;
+import org.apache.livy.JobContext;
 import org.apache.log4j.Logger;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
@@ -21,8 +22,6 @@ public class LivyHiveJob implements Job<List<Map<String,Object>>> {
     private String brand;
 
     private static Logger logger = Logger.getLogger(LivyHiveJob.class);
-
-    private ObjectMapper mapper = new ObjectMapper();
 
     public LivyHiveJob(String brand){
         this.brand=brand;
@@ -54,10 +53,10 @@ public class LivyHiveJob implements Job<List<Map<String,Object>>> {
         List<Map<String,Object>> result= new ArrayList<>();
         try {
 
-            Dataset<Row> sqlDF = sparkSession.sql("SELECT tdrimssales,stcimssales,itemquantity,brand FROM test.imssales_parque where the_year=2017");
-            sqlDF.createOrReplaceTempView("imssales_parque");
-            System.out.println("cache -----> " + sparkSession.catalog().isCached("imssales_parque"));
-            Dataset<Row> grpDataSet = sparkSession.sql("SELECT sum(tdrimssales) as tdrimssales ,sum(stcimssales) as stcimssales,sum(itemquantity) as itemquantity,brand FROM imssales_parque group by brand");
+            Dataset<Row> sqlDF = sparkSession.sql("SELECT glidepathActualsales,region FROM test.newstoreglidepath");
+            sqlDF.createOrReplaceTempView("newstoreglidepath_parque");
+            System.out.println("cache -----> " + sparkSession.catalog().isCached("newstoreglidepath_parque"));
+            Dataset<Row> grpDataSet = sparkSession.sql("SELECT sum(glidepathActualsales) as glidepathActualsales ,region FROM newstoreglidepath_parque group by region");
 
             stringDataset = grpDataSet.toJSON().collectAsList();
             logger.info("After String dataSet is populated...");
